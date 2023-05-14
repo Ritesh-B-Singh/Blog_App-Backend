@@ -7,6 +7,12 @@ const Blog = require('./models/Blog');
 app.use(cors({ credentials: true, origin: 'https://blog-app-two-beryl.vercel.app/' }));
 app.use(express.json());
 
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "https://blog-app-two-beryl.vercel.app");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 mongoose.connect('mongodb+srv://riteshbmsingh:n2oTmQBQUzI5lHLf@cluster0.cay8nvi.mongodb.net/?retryWrites=true&w=majority');
 
 app.put('/', async (req, res) => {
