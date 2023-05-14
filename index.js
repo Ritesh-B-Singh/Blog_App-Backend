@@ -28,7 +28,7 @@ app.use(function (req, res, next) {
 });
 
 
-app.put('/edit', async (req, res) => {
+app.put('/', async (req, res) => {
     const { id, title, imageUrl, content, author, quote } = req.body;
     try {
         const filter = { _id: id };
@@ -41,13 +41,9 @@ app.put('/edit', async (req, res) => {
     }
 });
 
-app.get('/blog', async (req, res) => {
+app.get('/', async (req, res) => {
     res.json(await Blog.find());
 });
-
-app.get('/', (req, res) => {
-    res.json('Hello')
-})
 
 
 app.listen(4000);
