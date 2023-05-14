@@ -1,10 +1,8 @@
 const express = require('express');
-const cors = require('cors');
 const mongoose = require("mongoose");
 const app = express();
 const Blog = require('./models/Blog');
 
-app.use(cors({ credentials: true, origin: 'https://blog-app-two-beryl.vercel.app/' }));
 app.use(express.json());
 
 app.use(function (req, res, next) {
@@ -22,7 +20,7 @@ app.use(function (req, res, next) {
 
 mongoose.connect('mongodb+srv://riteshbmsingh:n2oTmQBQUzI5lHLf@cluster0.cay8nvi.mongodb.net/?retryWrites=true&w=majority');
 
-app.put('/', async (req, res) => {
+app.put('/edit', async (req, res) => {
     const { id, title, imageUrl, content, author, quote } = req.body;
     try {
         const filter = { _id: id };
@@ -35,7 +33,7 @@ app.put('/', async (req, res) => {
     }
 });
 
-app.get('/', async (req, res) => {
+app.get('/blog', async (req, res) => {
     res.json(await Blog.find());
 });
 
