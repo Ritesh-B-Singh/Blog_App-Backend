@@ -2,13 +2,15 @@ const express = require('express');
 const mongoose = require("mongoose");
 const app = express();
 const Blog = require('./models/Blog');
+const cors = require("cors");
+app.use(cors());
 
 mongoose.connect('mongodb+srv://riteshbmsingh:n2oTmQBQUzI5lHLf@cluster0.cay8nvi.mongodb.net/?retryWrites=true&w=majority');
 app.use(express.json());
 
 app.use(function (req, res, next) {
     res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+
     res.setHeader(
         "Access-Control-Allow-Methods",
         "OPTIONS, GET, POST, PUT, PATCH, DELETE"
@@ -39,7 +41,7 @@ app.get('/blog', async (req, res) => {
 });
 
 app.get('/', (req, res) => {
-    res.json('Hello World')
+    res.json('Hello')
 })
 
 
