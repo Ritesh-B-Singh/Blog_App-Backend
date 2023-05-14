@@ -13,19 +13,19 @@ app.use(cors(corsOptions));
 mongoose.connect('mongodb+srv://riteshbmsingh:n2oTmQBQUzI5lHLf@cluster0.cay8nvi.mongodb.net/?retryWrites=true&w=majority');
 app.use(express.json());
 
-// app.use(function (req, res, next) {
-//     res.setHeader("Access-Control-Allow-Origin", "*");
+app.use(function (req, res, next) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
 
-//     res.setHeader(
-//         "Access-Control-Allow-Methods",
-//         "OPTIONS, GET, POST, PUT, PATCH, DELETE"
-//     );
-//     res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-//     if (req.method === "OPTIONS") {
-//         return res.sendStatus(200);
-//     }
-//     next();
-// });
+    res.setHeader(
+        "Access-Control-Allow-Methods",
+        "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+    );
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    if (req.method === "OPTIONS") {
+        return res.sendStatus(200);
+    }
+    next();
+});
 
 
 app.put('/', async (req, res) => {
