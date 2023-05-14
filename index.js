@@ -8,8 +8,15 @@ app.use(cors({ credentials: true, origin: 'https://blog-app-two-beryl.vercel.app
 app.use(express.json());
 
 app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "https://blog-app-two-beryl.vercel.app");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader(
+        "Access-Control-Allow-Methods",
+        "OPTIONS, GET, POST, PUT, PATCH, DELETE"
+    );
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    if (req.method === "OPTIONS") {
+        return res.sendStatus(200);
+    }
     next();
 });
 
