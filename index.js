@@ -5,7 +5,7 @@ const Blog = require('./models/Blog');
 const cors = require("cors");
 
 var corsOptions = {
-    origin: "https://blog-app-two-beryl.vercel.app/"
+    origin: "https://blog-app-two-beryl.vercel.app"
 };
 
 app.use(cors(corsOptions));
